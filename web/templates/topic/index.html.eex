@@ -10,14 +10,18 @@
       <%= topic.title%>
       </div>
       <div class="fixed-action-btn horizontal click-to-toggle" style="top: -5px; bottom: 1px; position: absolute;">
-         <a id=<%= topic.id%> class="btn-floating btn-large light-blue"><i class="material-icons">menu</i></a>
+         <a class="btn-floating btn-large waves-effect waves-light light-blue"><i class="material-icons">menu</i></a>
          <ul>
             <li>
-              <%= link to: topic_path(@conn, :edit, topic), class:  "btn-floating green" do %>
+              <%= link to: topic_path(@conn, :edit, topic), class:  "btn-floating waves-effect waves-light green pulse" do %>
                 <i class="material-icons">mode_edit</i>
               <% end %>
             </li>
-            <li><a class="btn-floating red"><i class="material-icons">delete</i></a></li>
+            <li>
+            <%= link to: topic_path(@conn, :delete, topic), class: "btn-floating waves-effect waves-light red pulse", method: :delete do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+            </li>
          </ul>
        </div>
     </div>
