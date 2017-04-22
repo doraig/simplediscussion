@@ -7,14 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Discuss!</title>
+    <title>Discussion Blog!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   </head>
 
   <body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <nav class="light-blue">
       <div class="nav-wrapper container">
         <a href="/" class="brand-logo">
