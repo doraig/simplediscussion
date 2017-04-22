@@ -1,6 +1,13 @@
 defmodule Discuss.TopicController do
   use Discuss.Web, :controller
   alias Discuss.Topic
+
+
+  def index(conn, _params) do
+    topics = Repo.all(Topic)
+    render conn, "index.html", topics: topics
+  end
+
   def new(conn, _params) do
     changeset = Topic.changeset(%Topic{},  %{})
 
@@ -10,7 +17,7 @@ defmodule Discuss.TopicController do
   def create(conn, %{"topic" => topic}) do
     changeset = Topic.changeset(%Topic{}, topic)
     case Repo.insert(changeset) do
-      {:ok, post} ->
+      {:ok, _topic} ->
         conn
         |> put_flash(:info, "Topic Created")
         |> redirect(to: topic_path(conn, :index))
@@ -19,10 +26,25 @@ defmodule Discuss.TopicController do
     end
   end
 
-  def index(conn, _params) do
-    topics = Repo.all(Topic)
-    render conn, "index.html", topics: topics
+  def edit(conn, %{"topic_id" => topic_id} = params) do
+      IO.inspect params
+      topic = Repo.get(Topic, topic_id)
+      changeset = Topic.changeset(topic)
+
+      render conn, "edit.html", changeset: changeset, topic: topic
   end
 
+  def update(conn, %{"topic_id" => topic_id, "topic" => topic}) do
+    old_topic = Repo.get(Topic, topic_id)
+    changeset =  Topic.changeset(old_topic, topic)
+    case Repo.update(changeset) do
+      {:ok, _topic} ->
+        conn
+        |> put_flash(:info, "Topic Updated")
+        |> redirect(to: topic_path(conn, :index))
+      {:error, changeset} ->
+        render conn, "edit.html", changeset: changeset, topic: old_topic
+    end
+  end
 
 end

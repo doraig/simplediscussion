@@ -1,16 +1,34 @@
 <h2>Topics</h2>
-<div >
+<div>
   <div>
     <ul class="collection">
     <%= for topic <- @topics do %>
     <li class="collection-item">
+      <div class="list">
+      <div class="list-block">
+
       <%= topic.title%>
+      </div>
+      <div class="fixed-action-btn horizontal click-to-toggle" style="top: -5px; bottom: 1px; position: absolute;">
+         <a id=<%= topic.id%> class="btn-floating btn-large light-blue"><i class="material-icons">menu</i></a>
+         <ul>
+            <li>
+              <%= link to: topic_path(@conn, :edit, topic), class:  "btn-floating green" do %>
+                <i class="material-icons">mode_edit</i>
+              <% end %>
+            </li>
+            <li><a class="btn-floating red"><i class="material-icons">delete</i></a></li>
+         </ul>
+       </div>
+    </div>
     </li>
     <% end %>
     </ul>
+
+
   </div>
   <div class="right-align">
-    <%= link to: topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red" do %>
+    <%= link to: topic_path(@conn, :new), class: "btn-floating btn-large waves-effect waves-light red pulse" do %>
       <i class="material-icons">add</i>
     <% end %>
   </div>
