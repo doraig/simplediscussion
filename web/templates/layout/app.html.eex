@@ -23,7 +23,18 @@
         <a href="/" class="brand-logo">
           Discussions
         </a>
+        <ul class="right">
+          <%= if @conn.assigns[:user] do %>
+            <li>
+              <%= link "Logout", to: auth_path(@conn, :signout) %>
+            </li>
+            <% else %>
+            <li>
+              <%= link "Sign in with Google", to: auth_path(@conn, :request, "google") %>
+            </li>
+          <% end %>
 
+        </ul>
       </div>
     </nav>
     <div class="container">
