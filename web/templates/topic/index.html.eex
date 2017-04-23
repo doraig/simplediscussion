@@ -7,8 +7,9 @@
       <div class="list">
       <div class="list-block">
 
-      <%= topic.title%>
+      <%= link to: topic_path(@conn, :show, topic) do %> <%= topic.title%> <% end %>
       </div>
+      <%= if @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
       <div class="fixed-action-btn horizontal click-to-toggle" style="top: -5px; bottom: 1px; position: absolute;">
          <a class="btn-floating btn-large waves-effect waves-light light-blue"><i class="material-icons">menu</i></a>
          <ul>
@@ -24,6 +25,7 @@
             </li>
          </ul>
        </div>
+       <% end %>
     </div>
     </li>
     <% end %>
