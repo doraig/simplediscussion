@@ -1,5 +1,5 @@
-# Discuss
-
+# Discussion Board
+This application is a simple representation of discussion board which incorporates OAuth module using Google account for authentication.
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
